@@ -9,14 +9,6 @@
 
 ---
 
-## 📄 Apresentação Geral
-
-Este relatório apresenta, de forma objetiva e estruturada, o desenvolvimento de um **sistema de gerenciamento de tarefas** implementado em **C++**, utilizando uma **Lista Simplesmente Encadeada (LSE)** como estrutura de dados principal.
-
-O projeto tem como finalidade unir teoria e prática, promovendo a aplicação concreta de conceitos fundamentais da disciplina **Estruturas de Dados Básico I**, com especial ênfase no uso de **ponteiros** e **alocação dinâmica de memória**.
-
----
-
 ## 🎯 Objetivo do Projeto
 
 O principal objetivo do projeto é **implementar um sistema funcional capaz de cadastrar, organizar, buscar e remover tarefas de forma dinâmica**, utilizando uma **Lista Simplesmente Encadeada (LSE)**.
