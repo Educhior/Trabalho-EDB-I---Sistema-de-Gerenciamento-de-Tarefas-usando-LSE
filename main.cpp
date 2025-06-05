@@ -91,34 +91,30 @@ void removerTarefaPrioridade(Node*& head, int prioridade) {
 
     Node* current = head;
     Node* previous = nullptr;
-    bool removido = false; // Flag para controlar se alguma tarefa foi removida
-
-    Node* tempHead = head; // Usamos um ponteiro temporário para iterar e modificar a lista
-    previous = nullptr; // Reinicia previous para a busca
-    current = tempHead;
+    bool removido = false;
 
     while (current != nullptr) {
         if (current->tarefa.prioridade == prioridade) {
-            if (previous == nullptr) { // Removendo o primeiro nó da lista (ou da sub-lista após remoções)
+            Node* toDelete = current;
+            if (previous == nullptr) {
                 head = current->next;
-                delete current;
-                current = head; // Atualiza current para o novo head
+                current = head;
             } else {
                 previous->next = current->next;
-                delete current;
-                current = previous->next; // Atualiza current para o nó após o removido
+                current = current->next;
             }
-            cout << "Tarefa com prioridade " << prioridade << " removida com sucesso!" << endl;
+            delete toDelete;
             removido = true;
-            return;
+            continue;
         } else {
             previous = current;
             current = current->next;
         }
     }
 
-
-    if (!removido) {
+    if (removido) {
+        cout << "Todas as tarefas com prioridade " << prioridade << " foram removidas com sucesso!" << endl;
+    } else {
         cout << "Nenhuma tarefa com prioridade " << prioridade << " encontrada!" << endl;
     }
 }
@@ -147,7 +143,6 @@ void printTarefas(Node* head) { //exibe as informações em ordem de prioridade
                 encontrouAlguma = true;
                 cout << "  ID: " << current->tarefa.ID << endl;
                 cout << "  Descricao: " << current->tarefa.descricao << endl;
-                // cout << "  Prioridade: " << current->tarefa.prioridade << endl; // Já está no header da prioridade
                 cout << "  -------------------------------------" << endl;
             }
             current = current->next;
@@ -211,8 +206,8 @@ int main() {
         cout << "=======================================" << endl;
         cout << "1. Inserir Tarefa" << endl;
         cout << "2. Remover Tarefa por ID" << endl;
-        cout << "3. Remover Tarefa por Prioridade (primeira ocorrencia)" << endl;
-        cout << "4. Exibir Tarefas (por prioridade)" << endl;
+        cout << "3. Remover Tarefa por Prioridade" << endl;
+        cout << "4. Exibir Tarefas (Por prioridade)" << endl;
         cout << "5. Buscar Tarefa por ID" << endl;
         cout << "0. Sair" << endl;
         cout << "=======================================" << endl;
